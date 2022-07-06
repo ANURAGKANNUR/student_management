@@ -1,0 +1,29 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+<body>
+<form method="post" action="/student/search/">
+        {% csrf_token %}
+
+<table><tr>
+    <td>Search by Phone number<input type="text" name="phone"></td>
+    <td><input type="submit"value="search"></td>
+</tr></table>
+<table class="table table-striped">
+    <tr>
+        <th scope="col">Full Name</th>
+        <th scope="col">Phone no</th>
+        <th scope="col">Email</th>
+        <th scope="col">action</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{ i.name }}</td>
+        <td>{{ i.phone }}</td>
+        <td>{{ i.email }}</td>
+        <td><a href="{% url 'view' i.student_code %}" class="btn btn-outline-danger">View</a> </td>
+    </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}

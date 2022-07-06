@@ -1,0 +1,14 @@
+{% extends 'user_index.html' %}
+{% block body %}
+<body xmlns="http://www.w3.org/1999/html">
+    <h1> Signup Form</h1>
+
+<form method="post"action="/student/register/"enctype="multipart/form-data"class="text-center border border-light p-5">
+    <table>
+    {% csrf_token %}
+    {{ form.as_table }}
+    </table>
+    <input type="submit"value="Register">
+</form>
+</body>
+{% endblock %}
